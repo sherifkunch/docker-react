@@ -1,0 +1,10 @@
+version: '3'
+services:
+  redis-server:
+    image: 'redis'
+  node-app:
+    build: . # look in the current dir for a docker file and use it to build an image
+    ports:
+      - "4001:8081" # 4001 on my local machine -> 8081 inside the container
+
+
