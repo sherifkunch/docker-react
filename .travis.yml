@@ -4,7 +4,7 @@ services: #ensure a copy of docker for travis actions
   - docker
 
 before_install: # some setup that needs to occur before we deploy our project
-  - docker build --no-cache -t docker-react -f Dockerfile.dev .
+  - docker build --no-cache -t docker-react -f Dockerfile .
 
 script:  # contain all the needed commands that actually run our test suite 
   - docker run -e CI=true docker-react npm run test
