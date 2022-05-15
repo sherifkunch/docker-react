@@ -1,10 +1,20 @@
 version: '3'
 services:
-  redis-server:
-    image: 'redis'
-  node-app:
-    build: . # look in the current dir for a docker file and use it to build an image
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
     ports:
-      - "4001:8081" # 4001 on my local machine -> 8081 inside the container
-
-
+      - '3000:3000'
+    volumes:
+      - /app/node_modules
+      - .:/app
+  tests:
+    stdin_open: true
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - /app/node_modules
+      - .:/app
+    command: ['npm', 'run', 'test']
