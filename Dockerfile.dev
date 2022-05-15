@@ -8,3 +8,6 @@ RUN npm install
 COPY . .
 
 CMD ["npm", "run", "start"]
+
+#for development purposes
+#docker is creating internal server to serve the web 
